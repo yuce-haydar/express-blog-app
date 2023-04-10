@@ -158,8 +158,9 @@ exports.get_category_create = async function (req, res) {
 
 exports.post_category_create = async function (req, res) {
   const name = req.body.name;
+  const url=slugfield(name)
   try {
-    await Category.create({ name: name });
+    await Category.create({ name: name,url:url });
     res.redirect("/admin/categories?action=create");
   } catch (err) {
     console.log(err);
