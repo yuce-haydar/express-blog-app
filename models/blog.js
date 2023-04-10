@@ -33,7 +33,6 @@ const Blog = sequelize.define(
       type: DataTypes.BOOLEAN,
       allowNull: false,
     },
-    
   },
   {
     timestamps: true,

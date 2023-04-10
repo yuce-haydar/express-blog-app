@@ -92,7 +92,7 @@ exports.post_blog_create = async function (req, res) {
   const anasayfa = req.body.anasayfa == "on" ? 1 : 0;
   const onay = req.body.onay == "on" ? 1 : 0;
   const userid = req.session.userid;
-  // const categories=req.body.categories;
+  const kategoriIds = req.body.categories;
   let resim = "";
   try {
     if (baslik == "") {
@@ -110,7 +110,7 @@ exports.post_blog_create = async function (req, res) {
     if (aciklama == "") {
       throw new Error("aciklama bos gecilemez");
     }
-    await Blog.create({
+    const blog=  await Blog.create({
       baslik: baslik,
       url: slugfield(baslik),
       altbaslik: altbaslik,
@@ -120,6 +120,16 @@ exports.post_blog_create = async function (req, res) {
       onay: onay,
       userId: userid,
     });
+
+      const selectedCategories = await Category.findAll({
+        where: {
+          id: {
+            [Op.in]: kategoriIds,
+          },
+        },
+      });
+      await blog.addCategories(selectedCategories);
+  
     await 
     res.redirect("/admin/blogs?action=create");
   } catch (err) {
