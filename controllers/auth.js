@@ -183,6 +183,17 @@ exports.get_newpassword = async function (req, res, next) {
     next(error);
   }
 };
+exports.get_profile = async function (req, res, next) {
+  try {
+    
+    return res.render("auth/profile", {
+      title: "profile",
+    
+    });
+  } catch (error) {
+    next(error);
+  }
+};
 exports.post_newpassword = async function (req, res, next) {
   const token = req.body.token;
   const userId = req.body.userId;
