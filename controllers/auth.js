@@ -1,4 +1,5 @@
 const User = require("../models/user");
+const Blog = require("../models/blog");
 var bcrypt = require("bcryptjs");
 const sendMailService = require("../helpers/send-mail");
 const config = require("../config");
@@ -183,17 +184,6 @@ exports.get_newpassword = async function (req, res, next) {
     next(error);
   }
 };
-exports.get_profile = async function (req, res, next) {
-  try {
-    
-    return res.render("auth/profile", {
-      title: "profile",
-    
-    });
-  } catch (error) {
-    next(error);
-  }
-};
 exports.post_newpassword = async function (req, res, next) {
   const token = req.body.token;
   const userId = req.body.userId;
@@ -215,6 +205,31 @@ exports.post_newpassword = async function (req, res, next) {
     await user.save();
     req.session.message = { text: "parola günellendi", class: "success" };
     return res.redirect("login");
+  } catch (error) {
+    next(error);
+  }
+};
+
+exports.get_profile = async function (req, res, next) {
+  const userid = req.session.userid;
+  const blogid = req.params.blogid;
+  
+
+
+
+
+  try {
+    const user =await User.findByPk(userid);
+    const blog = await Blog.findAll({
+      where:  {  userId: userid },
+    });
+
+    return res.render("auth/profile", {
+      title: "profile",
+      user:user,
+      blog:blog
+    
+    });
   } catch (error) {
     next(error);
   }

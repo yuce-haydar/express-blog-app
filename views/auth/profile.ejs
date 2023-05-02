@@ -7,15 +7,64 @@
     <%- include("../partials/nav") %>
 
     <div class="container mt-3">
-        <div class="card mx-auto mt-5 text-center" style="width: 50rem;">
-            <img src="../../static/images/images (1)-1681152290069.jpg" class="card-img-top mx-auto border rounded-5" style="width: 18rem;" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-          </div>
+
+      <div class="row">
+        <div class="col-md-6 text-center">
+          <img src="../../static/images/1f78df92d5570b667330216ae62474a6--bir-search-1681152356187.jpg" style="border-radius: 100%; height: 200px; width: 200px;" alt="">
+            <h5 class="card-title"><%= user.fullname %></h5>
+            <p class="card-text"><%= user.email %></p>
+         
+
+        </div>
+        <div class="col-md-6">
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th style="width: 50px">id</th>
+                <th style="width: 150px">resim</th>
+                <th>baslik</th>
+         
+                <th style="width: 130px"></th>
+              </tr>
+            </thead>
+            <tbody>
       
+              <% blog.forEach(b => { %>
+              <tr>
+                <td>#<%= b.id %></td>
+                <td>
+                  <img
+                    src="/static/images/<%= b.resim %>"
+                    class="img-fluid"
+                    alt=""
+                  />
+                </td>
+                <td><%= b.baslik %></td>
+            
+                <td>
+                  <a
+                    class="btn btn-sm btn-primary"
+                    href="/admin/blogs/<%= b.id %>"
+                    >edit</a
+                  >
+                  <a
+                    class="btn btn-sm btn-danger"
+                    href="/admin/blogs/delete/<%= b.id %>"
+                    >delete</a
+                  >
+                </td>
+              </tr>
+              <% }) %>
+            </tbody>
+          </table>   
+
+        </div>
+
+      </div>
+
+
+
+    
       </div>
     
   </body>
