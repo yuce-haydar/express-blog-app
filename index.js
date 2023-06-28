@@ -30,6 +30,7 @@ const Category = require("./models/category");
 const Blog = require("./models/blog");
 const User = require("./models/user");
 const Role = require("./models/role");
+const Comment = require("./models/comment");
 
 // middleware
 app.use(express.urlencoded({ extended: true }));
@@ -75,6 +76,18 @@ Category.belongsToMany(Blog, { through: "blogCategories" });
 
 Role.belongsToMany(User, { through: "userRoles" });
 User.belongsToMany(Role, { through: "userRoles" });
+
+
+User.belongsToMany(Comment, { through: "UserComment" });
+Comment.belongsToMany(User, { through: "UserComment" });
+
+Blog.belongsToMany(Comment, { through: "BlogComment" });
+Comment.belongsToMany(Blog, { through: "BlogComment" });
+
+Blog.hasMany(Comment);
+Comment.belongsTo(Blog);
+
+
 
 (async () => {
   // await sequelize.sync({ force: true });

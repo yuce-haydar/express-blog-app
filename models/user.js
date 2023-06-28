@@ -1,6 +1,7 @@
 const { DataTypes } = require("sequelize");
 const sequelize = require("../data/db");
 const bcrypt = require("bcrypt");
+const Comment = require("./comment");
 
 const User = sequelize.define(
   "user",
@@ -53,7 +54,7 @@ const User = sequelize.define(
   },
   { timestamps: true }
 );
-
+// User.hasMany(Comment, { foreignKey: "userId" });
 User.afterValidate(async (user) => {
   user.password = await bcrypt.hash(user.password, 10);
 });

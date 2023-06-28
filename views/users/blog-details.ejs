@@ -29,6 +29,47 @@
           </div>
         </div>
       </div>
+      <hr>
+      <h3>Yorumlar</h3>
+      <div class="card">
+        <div class="card-body">
+          <div class="row ">
+         
+            <% comment.forEach(element => { %>
+            <div class="d-flex   ">
+              <div class="w-25">
+                <img src="../../static/images/1f78df92d5570b667330216ae62474a6--bir-search-1681152356187.jpg" class=" w-100 rounded-3" alt="">
+                <p class="text-center"><%= element.user.fullname %></p>
+                
+             
+               </div>
+              <div class="w-100 ps-3">
+                <p><%= element.content %></p>
+              </div>
+            </div>
+              <hr>
+            <% }) %>
+          </div>
+       
+        </div>
+      </div>
+      <hr>
+      <h3>Yorum Yap</h3>
+      <div class="card">
+        <div  class="card-body ">
+         <form  method="post" action=""
+            class=" d-flex justify-content-between ">
+          <input name="content" type="text" class="w-100" > </input>
+          <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
+          <input name="blogid" type="hidden" class="w-100" value="<%= blog.id %>
+          " > </input>
+            <button type="submit" class="btn btn-success">Yorum yap </button> 
+         </form>
+          </div>
+         
+        </div>
+      </div>
+    
     </div>
   </body>
 </html>
