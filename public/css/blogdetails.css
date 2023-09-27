@@ -1,0 +1,38 @@
+.yorum{
+    align-items: center;
+    margin-top: 15px;
+}
+.yorum-img{
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+}
+.yorum-sol-kisim{
+   width: 250px;
+   text-align: center;
+   align-items: center;
+   padding: 10px;
+   
+}
+.yorum-sol-kisim p{
+    margin-left: 10px;
+}
+.card-body{
+    padding: 0;
+}
+.yorum-tarih{
+    width: 200px;
+    position: relative;
+    right: 0;
+    top: 0;
+}
+.commentbutton{
+  width: 30%;
+  margin-left:5px;
+}
+.commentinput{
+
+    height: 50px;
+    border: 1px solid;
+    border-radius: 10px;
+}

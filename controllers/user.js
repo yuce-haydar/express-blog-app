@@ -45,17 +45,22 @@ exports.blogs_details_comment = async function (req, res) {
   const blogid = req.body.blogid;
 
   try {
-    const comment = await Comment.create({
-      content: content,
-      userId: userid,
-      blogId: blogid,
-    });
-    await comment.addUser(userid);
-    await comment.addBlog(blogid);
+    if (req.session.isAuth == undefined || !req.session.isAuth) {
+      console.log(`hata`);
+      res.redirect(slug);
+    } else {
+      const comment = await Comment.create({
+        content: content,
+        userId: userid,
+        blogId: blogid,
+      });
+      await comment.addUser(userid);
+      await comment.addBlog(blogid);
 
-    res.redirect(slug);
+      res.redirect(slug);
+    }
   } catch (err) {
-    console.log(err);
+    console.log(err[0]);
   }
 };
 
@@ -99,7 +104,7 @@ exports.index = async function (req, res) {
     const categories = await Category.findAll({ raw: true });
 
     res.render("users/index", {
-      title: "Popüler Kurslar",
+      title: "Tüm Yazılar",
       blogs: blogs,
       categories: categories,
       selectedCategory: null,

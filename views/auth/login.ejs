@@ -1,55 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <%- include("../partials/head") %>
-  </head>
-  <body>
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .form-container {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 5px;  
+            margin:150px auto;
+         max-width: 400px;
+        }
+
+        .form-container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+           
+        }
+
+        .form-container label {
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .form-container input[type="email"],
+        .form-container input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+            margin-bottom: 15px;
+        }
+
+        .form-container button {
+            width: 100%;
+            padding: 10px;
+            background-color: #058e0a;
+            color: #ffffff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .form-container button:hover {
+            background-color: #ffffff;
+            border: 1px solid  #058e0a;
+            color: #1eff00;
+        }
+
+        .form-container a {
+            display: block;
+            margin-top: 10px;
+            text-align: center;
+            color: #007bff;
+        }
+
+        .notification-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+            position: absolute;
+            top: 50px;
+            left: 0;
+            right: 0;
+            text-align: center;
+        }
+     
+    </style>
+</head>
+<body>
     <%- include("../partials/nav") %>
     <div class="container mt-3">
       <div class="row">
         <div class="col-md-12 mt-3">
           <% if (typeof message != "undefined") { %>
-          <div class="alert alert-<%= message.class %>">
-            <%= message.text %>
-          </div>
-          <% } %>
-          <form method="post">
+                <div class="alert alert-<%= message.type %>"><%= message.text %></div>
+            <% } %>
+          <form method="post" class="form-container">
             <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
-            <div class="row mb-3">
-              <label for="baslik" class="col-sm-2 col-form-label">Email</label>
-              <div class="col-sm-10">
-                <input
-                  type="text"
-                  class="form-control"
-                  id="email"
-                  name="email"
-                />
-              </div>
-            </div>
-            <div class="row mb-3">
-              <label for="baslik" class="col-sm-2 col-form-label"
-                >password</label
-              >
-              <div class="col-sm-10">
-                <input
-                  type="text"
-                  class="form-control"
-                  id="password"
-                  name="password"
-                />
-              </div>
-            </div>
-            <div class="row mb-3">
-              <div class="col-sm-8 offset-sm-2">
-                <button type="submit" class="btn btn-primary">Giris Yap</button>
-                <a href="resetpassword" class="btn btn-link"
-                  >parola sıfırlama</a
-                >
-              </div>
-            </div>
-          </form>
+                <div class="mb-3">
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control" id="email" name="email" required>
+                </div>
+                <div class="mb-3">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" id="password" name="password" required>
+                </div>
+                <div class="mb-3">
+                    <button type="submit">Login</button>
+                </div>
+                <a href="/resetpassword">Forgot Password?</a>
+            </form>
         </div>
-      </div>
     </div>
-  </body>
+</body>
 </html>
