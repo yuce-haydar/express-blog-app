@@ -48,7 +48,7 @@ app.use(
     }),
   })
 );
-
+//deneme
 app.use(locals);
 app.use(csurf());
 
