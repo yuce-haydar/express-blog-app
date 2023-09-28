@@ -5,14 +5,22 @@
   </head>
   <body>
     <%- include("../partials/nav") %>
-
+   
     <div class="container mt-3">
       <div class="row">
         <div class="col-md-10 mt-3">
           <% if (typeof message != "undefined") { %>
-          <div class="alert alert-<%= message.class %>">
-            <%= message.text %>
-          </div>
+            <script>
+              const message = "<%= message.text %>";
+              const toast = Toastify({
+                  text: message,
+                  duration: 2000, // 3 saniye görünecek
+                  gravity: "bottom", // Yerleştirme
+                  className: "custom-toast-class" // Toastify stil sınıfı
+       
+              });
+              toast.showToast();
+          </script>
           <% } %>
           <form
             method="post"

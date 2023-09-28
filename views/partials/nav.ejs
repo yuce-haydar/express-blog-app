@@ -1,4 +1,4 @@
-<nav class="navbar navbar-dark  bg-success navbar-expand-lg">
+<!-- <nav class="navbar navbar-dark  bg-success navbar-expand-lg">
   <div class="container">
     <a href="/" class="navbar-brand">Yuce-Haydar</a>
     <ul class="navbar-nav me-auto">
@@ -51,4 +51,78 @@
       <% } %>
     </ul>
   </div>
-</nav>
+</nav> -->
+
+<nav class="navbar navbar-expand-lg navbar-black" id="mainNav">
+  <div class="container px-4 px-lg-5">
+      <a class="navbar-brand" href="/">Yuce-Haydar Blog</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          Menu
+          <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item">
+            <a href="/blogs" class="nav-link">YAZILAR</a>
+          </li>
+    
+          <% if (isAdmin || isModerator) { %>
+    
+          <li class="nav-item">
+            <a href="/admin/blogs" class="nav-link">Admin Blogs </a>
+          </li>
+          <li class="nav-item">
+            <a href="/admin/blog/create" class="nav-link">Add Blog </a>
+          </li>
+    
+          <% } %> <% if (isAdmin) { %>
+    
+          <li class="nav-item">
+            <a href="/admin/categories" class="nav-link">Admin Categories </a>
+          </li>
+          <li class="nav-item">
+            <a href="/admin/category/create" class="nav-link">Add Category </a>
+          </li>
+          <li class="nav-item">
+            <a href="/admin/roles" class="nav-link">Roles</a>
+          </li>
+          <li class="nav-item">
+            <a href="/admin/users" class="nav-link">Users</a>
+          </li>
+    
+          <% } %>
+        </ul>
+        <ul class="navbar-nav ms-auto">
+          <% if (isAuth) { %>
+          <li class="nav-item">
+            <a href="/account/profile" class="nav-link"><%= fullname %> </a>
+          </li>
+          <li class="nav-item">
+            <a href="/account/logout" class="nav-link">Logout</a>
+          </li>
+          <% } else { %>
+          <li class="nav-item">
+            <a href="/account/login" class="nav-link">Login</a>
+          </li>
+          <li class="nav-item">
+            <a href="/account/register" class="nav-link">Register</a>
+          </li>
+          <% } %>
+        </ul>
+          <!-- <ul class="navbar-nav ms-auto py-4 py-lg-0">
+              <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="index.html">Home</a></li>
+              <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="about.html">About</a></li>
+              <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="post.html">Sample Post</a></li>
+              <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="contact.html">Contact</a></li>
+              <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="index.html">Home</a></li>
+              <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="about.html">About</a></li>
+              <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="post.html">Sample Post</a></li>
+              <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="contact.html">Contact</a></li>
+              <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="index.html">Home</a></li>
+              <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="about.html">About</a></li>
+              <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="post.html">Sample Post</a></li>
+              <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="contact.html">Contact</a></li>
+          </ul> -->
+      </div>
+  </div>
+</nav> 

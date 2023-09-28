@@ -90,8 +90,8 @@ Comment.belongsTo(Blog);
 
 
 (async () => {
-  // await sequelize.sync({ force: true });
-  // await dummyData();
+  await sequelize.sync({ force: true });
+  await dummyData();
 })();
 
 app.listen(3000, function () {

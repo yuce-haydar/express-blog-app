@@ -6,24 +6,38 @@
   <body>
     <%- include("../partials/nav") %>
    
-    <div class="container mt-3">
-    
-      <div class="row">
-        
+    <header class="masthead" style="background-image: url('../../static/img/home-bg.jpg')">
+      <div class="container position-relative px-4 px-lg-5">
+          <div class="row gx-4 gx-lg-5 justify-content-center">
+              <div class="col-md-10 col-lg-8 col-xl-7">
+                  <div class="site-heading">
+                      <h1>Clean Blog</h1>
+                      <span class="subheading">A Blog Theme by Start Bootstrap</span>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </header>
+    <div class="container px-4 px-lg-5">
+      <div class="row gx-4 gx-lg-5 justify-content-center">
         <div class="col-md-3">
           <h3 class="text-center">Kategoriler</h3>
           <%- include("../partials/category-menu", { categories,
           selectedCategory } ) %>
         </div>
-        <div class="col-md-9">
-          <h1 class="h3 mb-3"><%= selectedCategory?`${selectedCategory+" yazıları"}`:"Tüm Yazılar"%></h1>
+          <div class="col-md-9 col-lg-7 col-xl-6">
+            <h1 class="h3 mb-3"><%= selectedCategory?`${selectedCategory+" yazıları"}`:"Tüm Yazılar"%></h1>
      
-          <% if (blogs.length == 0) { %> <%- include("../partials/no-products")
-          %> <% } %> <% blogs.forEach(blog => { %> <%-
-          include("../partials/blog-card", blog) %> <% }) %> <%- include("../partials/pagination")%>
-        </div>
+            <% if (blogs.length == 0) { %> <%- include("../partials/no-products")
+            %> <% } %> <% blogs.forEach(blog => { %> <%-
+            include("../partials/blog-card", blog) %> <% }) %> <%- include("../partials/pagination")%>
+              <!-- Post preview-->
+             
+            
+              <div class="d-flex justify-content-end mb-4"><a class="btn btn-primary text-uppercase" href="#!">Older Posts →</a></div>
+          </div>
       </div>
-    </div>
+  </div>
     <div style="position: relative ; bottom: 0; width: 100%; ">
       <%-include("../partials/footer.ejs") %>
     </div>

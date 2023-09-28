@@ -11,33 +11,67 @@
         <%= message.text %>
       </div>
       <% } %>
-    <div class="container mt-3 w-50">
-      <div class="card">
-        <div class="card-body ">
-          <div class="row">
-            <div class="col-md-12 text-center">
-              <h1 class="h3 mb-3"><%= blog.baslik %></h1>
-              <p><%= blog.altbaslik %></p>
+
+      <header class="masthead" style="background-image: url('../../static/images/<%=blog.resim%>')">
+        <div class="container position-relative px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-md-10 col-lg-8 col-xl-7">
+                    <div class="post-heading">
+                        <h1><%= blog.baslik %></h1></h1>
+                        <h2 class="subheading"><%= blog.altbaslik %></h2>
+                        <!-- <span class="meta">
+                            Posted by
+                            <a href="#!">Start Bootstrap</a>
+                            on August 24, 2023
+                        </span> -->
+                    </div>
+                </div>
             </div>
-            <div class="col-md-12 d-flex justify-content-center">
-              <img
-                src="/static/images/<%=blog.resim%>"
-                class=""
-                alt=""
-                width="100%"
-                height="200px"
-              />
+        </div>
+    </header>
+    <!-- Post Content-->
+    <article class="mb-4">
+        <div class="container px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-md-10 col-lg-8 col-xl-7">
+                    <p>
+                      <%- blog.aciklama %>
+                    </p>
+                </div>
             </div>
-          </div>
-          <div class="row">
-            <div class="col-md-12 ps-5">
-              <p><%- blog.aciklama %></p>
+        </div>
+    </article>
+
+
+
+      <!-- <div class="container mt-3 w-50">
+        <div class="card">
+          <div class="card-body ">
+            <div class="row">
+              <div class="col-md-12 text-center">
+                <h1 class="h3 mb-3"><%= blog.baslik %></h1>
+                <p><%= blog.altbaslik %></p>
+              </div>
+              <div class="col-md-12 d-flex justify-content-center">
+                <img
+                  src="/static/images/<%=blog.resim%>"
+                  class=""
+                  alt=""
+                  width="100%"
+                  height="200px"
+                />
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12 ps-5">
+                <p><%- blog.aciklama %></p>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <hr />
+        <hr /> -->
 
+      <div class="container mt-3 w-50">
       <div class="card border-0">
         <div class="card-body">
         
@@ -96,6 +130,7 @@
      
           </div>
         </div>
+      </div>
       </div>
   
      
